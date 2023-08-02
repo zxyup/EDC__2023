@@ -33,24 +33,23 @@ def toa(s,ang):
         s.pulse_width(i)
         time.sleep_ms(1)
 
-
-#for i in range(1450,1500,5):
-    #y.pulse_width(i)
-    #time.sleep_ms(5)
-#for i in range(1350,1400,5):
-    #x.pulse_width(i)
-    #time.sleep_ms(5)
-
-toa(y,1620)
-toa(x,1390)
+def tov(xx,yy):
+    toa(y,yy)
+    toa(x,xx)
+    #toa(y,yy)
 
 
 
-#for i in range(1400,1710,10):
-    ##y.pulse_width(i)
-    #x.pulse_width(i)
-    ##break
-    #time.sleep_ms(100)
+
+
+(1390,1620)
+
+#toa(y,1620)
+#toa(x,1390)
+
+tov(1680,1620)
+
+
 
 
 #while(True):
@@ -71,6 +70,12 @@ toa(x,1390)
     #time.sleep(1)
 
 
+#for i in range(1450,1500,5):
+    #y.pulse_width(i)
+    #time.sleep_ms(5)
+#for i in range(1350,1400,5):
+    #x.pulse_width(i)
+    #time.sleep_ms(5)
 
 ##死区
 #while(True):
