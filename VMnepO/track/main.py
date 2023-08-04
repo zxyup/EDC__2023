@@ -18,7 +18,7 @@ def ctrl(xx,yy):
 ctrl(xx,yy)
 
 def fb(threshold,imgg):
-    blobs = imgg.find_blobs([threshold],x_stride=1,y_stride=1)
+    blobs = imgg.find_blobs([threshold],x_stride=1,y_stride=1,pixels_threshold=1, area_threshold=1, merge=True,invert = 0)
     if blobs:
         b = blobs[0]
         cx = b.cx()
@@ -55,27 +55,30 @@ clock = time.clock()
 sensor.reset()
 sensor.set_pixformat(sensor.RGB565)
 sensor.set_framesize(sensor.QVGA)
-sensor.set_auto_gain(1)
-sensor.set_auto_exposure(False, exposure_us=1400)
+sensor.set_auto_gain(0)
+sensor.set_auto_exposure(False, exposure_us=600)
 sensor.set_auto_whitebal(0)
 sensor.skip_frames(20)
 
 red_threshold = (55, 90, -4, 94, -4, 107)  # 红色激光笔的颜色阈值
 red_threshold =(55, 98, 5, 127, -25, 104)
-#red_threshold =(100, 0, 127, 36, -21, 15)
+red_threshold =(89, 100, 8, 127, -64, 42)
+red_threshold =(0, 100, 0, 127, 12, 30)
 green_threshold = (9, 86, 10, 71, -2, 66)    # 绿色十字的颜色阈值
 green_threshold=(75, 100, -114, 14, -94, 107)
 green_threshold=(82, 100, -54, 7, -47, 65)
 green_threshold=(82, 100, -89, -6, -40, 65)
+green_threshold=(87, 100, -127,7, -64, 42)
+green_threshold=(0, 100, -128, 0, 12, 30)
 
-sf=1
+sf=0
 
 
 #px=PID(0.1,0,0.005)
 #py=PID(0.04,0,0.005)
 
-px=PID(0.8,0.01,0.43)
-py=PID(0.8,0.01,0.53)
+px=PID(0.6,0,0.43)
+py=PID(0.6,0,0.53)
 
 
 
@@ -114,6 +117,7 @@ while True:
         #print(ct)
         if sf:
             img.draw_cross(cx, cy, color=(0,255, 0))
+
     else:
        tf=0
 
